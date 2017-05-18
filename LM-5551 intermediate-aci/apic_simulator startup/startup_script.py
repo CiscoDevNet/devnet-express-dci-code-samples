@@ -15,10 +15,11 @@ import cobra.model.infra
 import cobra.model.l3ext
 import cobra.model.fabric
 from cobra.internal.codec.xmlcodec import toXMLStr
+from credentials import *
 
 
 # log into an APIC and create a directory object
-ls = cobra.mit.session.LoginSession('https://apic', 'admin', 'password')
+ls = cobra.mit.session.LoginSession(URL, LOGIN, PASSWORD)
 md = cobra.mit.access.MoDirectory(ls)
 md.login()
 
