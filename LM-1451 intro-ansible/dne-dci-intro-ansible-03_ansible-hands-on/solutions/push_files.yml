@@ -1,0 +1,15 @@
+---
+  ###########################################################
+  #            Playbook to query dCloud servers             #
+  ###########################################################
+  - name: Retrieve facts from dCloud servers
+    hosts: dcloud-servers
+
+    tasks:
+      - name: "Push new host file:"
+        copy:
+          src: files/hosts
+          dest: /etc/hosts
+          owner: root
+          group: root
+          mode: 0644

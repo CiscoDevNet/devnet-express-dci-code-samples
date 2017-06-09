@@ -1,0 +1,4 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+198.18.134.49   centos1 centos1.dcloud.cisco.com
+198.18.134.50   centos2 centos2.dcloud.cisco.com
