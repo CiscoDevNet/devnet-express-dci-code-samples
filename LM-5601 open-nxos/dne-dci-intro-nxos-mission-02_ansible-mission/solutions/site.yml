@@ -1,0 +1,9 @@
+- hosts: dcloud_switches
+  connection: local
+  roles:
+    - { role: nxos_common }
+
+- hosts: nxos_leaf
+  connection: local
+  roles:
+    - { role: nxos_leaf }    
