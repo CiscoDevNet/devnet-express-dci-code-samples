@@ -43,7 +43,7 @@ for service_profile in service_profiles:
 
 from ucsmsdk.mometa.ls.LsBinding import LsBinding
 mo_ls_binding = LsBinding(parent_mo_or_dn=mo_sp,pn_dn="sys/chassis-1/blade-2")
-handle.add_mo(mo_ls_binding)
+handle.add_mo(mo_ls_binding, modify_present=True)
 handle.commit()
 
 # Query the Service Profile and the blade
@@ -53,5 +53,5 @@ print(service_profile.name, service_profile.assign_state, service_profile.assoc_
 blade = handle.query_dn("sys/chassis-1/blade-2")
 print(blade.dn, blade.assigned_to_dn)
 
-# Logout of the UCS Manager 
+# Logout of the UCS Manager
 handle.logout()
