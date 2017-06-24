@@ -15,6 +15,8 @@ mo_sp[0].usr_lbl = "Quantum Calculations Server"
 handle.set_mo(mo_sp[0])
 handle.commit()
 
+input("Service Profile User Label Updated - Press Enter to Continue...")
+
 # Delete the Server Pool
 filter_exp = '(name,"Python_Heroes_Server_Pool")'
 mo_compute_pool = handle.query_classid("ComputePool",filter_str=filter_exp)
