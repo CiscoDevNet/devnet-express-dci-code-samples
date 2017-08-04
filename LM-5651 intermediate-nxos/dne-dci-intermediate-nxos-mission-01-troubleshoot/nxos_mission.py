@@ -121,6 +121,7 @@ while True:
         input("Sorry the number you have entered is not valid. Press Enter to try again!")
 try:
     api.messages.create(ROOM_ID[0], markdown=mission_msg)
-    print("You successfully completed the mission. Check the Spark Room ")
+    print("You successfully completed the mission. Check the Spark Room\n\n\n")
+    print(mission_msg)
 except:
     print("Something went wrong while posting the message in the Spark Room!")
