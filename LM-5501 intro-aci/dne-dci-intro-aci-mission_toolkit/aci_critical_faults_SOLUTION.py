@@ -11,12 +11,12 @@ them to Cisco Spark.
 
 from acitoolkit.acitoolkit import Session
 from acitoolkit import Faults
-from credentials_sbx import URL, LOGIN, PASSWORD
+from credentials import URL, LOGIN, PASSWORD
 import requests, json
 
 # MISSION: Provide your Spark Token and the Room ID into which to post
-spark_token = "M2ViOTM0ZTAtZjBhNS00ZjFjLTk1NTUtYmVlYTUyYTU3ODljZDVmNmZjNWMtMGI3"
-spark_room_id = "Y2lzY29zcGFyazovL3VzL1JPT00vMDBhN2E4NDAtN2RlMS0xMWU2LTk2NGMtYzc1Y2QzZmM2NGVk"
+spark_token = ""
+spark_room_id = ""
 
 fault_count = {"total": 0, "critical": 0}
 
