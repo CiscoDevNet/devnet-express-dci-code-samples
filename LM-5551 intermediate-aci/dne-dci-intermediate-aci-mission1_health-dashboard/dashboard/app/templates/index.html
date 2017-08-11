@@ -77,7 +77,7 @@
 <body>
   <div id="container">
     <h3>Cisco ACI Application Health Dashboard</h3>
-    <br>
+    <br>    
     <div class="gridster">
       <ul>
         {% for app in health_dict %}
@@ -90,10 +90,15 @@
         {% endfor %}
       </ul>
     </div>
+    <br>
+    <p>Great job! Let everyone know you completed the mission by posting to Spark.<br>
+    <a href="/verify_to_spark">CLICK ME</a></p>
   </div>
   {% for app in health_dict %}
   <div id="{{app}}_modal" class="lean_modal"></div>
   {% endfor %}
+
+
 </body>
 <script type="text/javascript" language="javascript">
 $(function(){
