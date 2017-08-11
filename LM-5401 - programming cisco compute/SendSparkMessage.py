@@ -26,3 +26,6 @@ for room in resp["items"]:
 
 spark_msg_json = {"roomId": spark_room_id, "text": spark_message}
 resp = requests.post(spark_uri_v1 + spark_messages_resource, json=spark_msg_json, headers=spark_headers)
+
+resp = resp.json()
+print(resp)
