@@ -6,4 +6,11 @@
 - hosts: nxos_leaf
   connection: local
   roles:
-    - { role: nxos_leaf }    
+    - { role: nxos_leaf }
+
+- hosts: localhost
+  gather_facts: no
+  vars_files:
+    - group_vars/spark_main.yml
+  roles:
+    - {role: spark_message}

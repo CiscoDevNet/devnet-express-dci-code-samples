@@ -1,0 +1,22 @@
+- name: "Get Spark room list"
+  uri:
+    url: https://api.ciscospark.com/v1/rooms
+    headers:
+      Authorization: "Bearer {{spark_token}}"
+  register: rooms
+
+- name: "Retrieve the Spark room UUID from the room name"
+  set_fact:
+    spark_room_id: "{{ item.id }}"
+  when: item.title == "{{spark_room}}"
+  with_items: "{{rooms.json['items']}}"
+
+- name: "Post your results to the Spark room"
+  uri:
+    url: https://api.ciscospark.com/v1/messages
+    method: POST
+    headers:
+      Authorization: "Bearer {{spark_token}}"
+    body: {roomId: "{{spark_room_id}}", text: "You finished the mission!"}
+    body_format: json
+  register: test
