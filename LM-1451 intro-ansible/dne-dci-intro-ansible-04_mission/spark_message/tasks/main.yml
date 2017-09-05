@@ -17,6 +17,6 @@
     method: POST
     headers:
       Authorization: "Bearer {{spark_token}}"
-    body: {roomId: "{{spark_room_id}}", text: "You finished the mission!"}
+    body: {roomId: "{{spark_room_id}}", text: "Congrats! You finished the mission for LM-1451: Intro to Ansible!"}
     body_format: json
   register: test
