@@ -2,7 +2,7 @@ food={"vegetables":["carrots","kale","cucumber","tomato"]}
 for veg in food["vegetables"]:
 	print(veg)
 
-cars={"sports":{"Porsche":"Volkswagon","Viper":"Dodge","Corvette":"Chevy"}}
+cars={"sports":{"Porsche":"Volkswagen","Viper":"Dodge","Corvette":"Chevy"}}
 for auto in cars["sports"]:
 	print(auto, cars["sports"][auto])
 

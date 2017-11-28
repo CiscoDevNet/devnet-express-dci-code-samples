@@ -1,7 +1,7 @@
 food={"vegetables":["carrots","kale","cucumber","tomato"]}
 print(food["vegetables"][1])
 
-cars={"sports":{"Porsche":"Volkswagon","Viper":"Dodge","Corvette":"Chevy"}}
+cars={"sports":{"Porsche":"Volkswagen","Viper":"Dodge","Corvette":"Chevy"}}
 print(cars["sports"]["Viper"])
 
 dessert={"iceCream":["Rocky-Road","strawberry","Pistachio-Cashew","Pecan-Praline"]}
