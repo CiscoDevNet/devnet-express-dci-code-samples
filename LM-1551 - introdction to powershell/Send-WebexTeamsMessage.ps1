@@ -1,10 +1,10 @@
 ﻿<#
 
 .SYNOPSIS
-Send-WebexForTeamsMessage, Send a Message to a Webex for Teams Room
+Send-WebexTeamsMessage, Send a Message to a Webex for Teams Room
 
 .DESCRIPTION
-Send-WebexForTeamsMessage, Send a Message to a Webex for Teams Room
+Send-WebexTeamsMessage, Send a Message to a Webex for Teams Room
 
 .NOTES
 John McDonough, Cisco Systems, Inc. (jomcdono)
@@ -19,7 +19,7 @@ A Webex for Teams Room Name
 The Webex for Teams Message you wish to Send
 
 .EXAMPLE
-Send-WebexForTeamsMessage.ps1 -ApiToken "ZDNiZmFiOWEtN2Y3Zi00YjI3LWI3NWItYmNkNzQxOTUyYmZiNWQ0ZTY5N2ItOTlj" -RoomName "DevNet Express DCI Event Room" -Message "I have completed the Introduction to PowerShell Mission"
+Send-WebexTeamsMessage.ps1 -ApiToken "ZDNiZmFiOWEtN2Y3Zi00YjI3LWI3NWItYmNkNzQxOTUyYmZiNWQ0ZTY5N2ItOTlj" -RoomName "DevNet Express DCI Event Room" -Message "I have completed the Introduction to PowerShell Mission"
 
 #>
 param(
@@ -35,10 +35,10 @@ param(
     [string] $message
 );
 
-# Set up the Header
-
+# Set up support for ssl and tls
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Ssl3 -bor [System.Net.SecurityProtocolType]::Tls -bor [System.Net.SecurityProtocolType]::Tls11 -bor [System.Net.SecurityProtocolType]::Tls12
 
+# Set up the header
     $headers = @{"Authorization" = "Bearer $apiToken"; "Content-Type" = "application/json"; "Acccept" = "application/json"}
 
     try {
