@@ -14,7 +14,7 @@ if (api_token == 'YOUR TOKEN' or
     quit()
 
 messages_resource = '/messages'
-rooms_resource = '/rooms'
+rooms_resource = '/rooms?max=1000'
 uri_v1 = 'https://api.ciscospark.com/v1'
 
 http_headers = {'Authorization':'Bearer ' + api_token, 'Content-Type':'application/json', 'Accept':'application/json'}

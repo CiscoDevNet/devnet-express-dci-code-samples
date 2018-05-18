@@ -44,23 +44,24 @@ param(
     try {
         # Get the Id of the Room
         if ($roomName.Length -gt 0) {
-            $roomId = Invoke-RestMethod -Uri https://api.ciscospark.com/v1/rooms -Headers $headers | %{$_.items | ?{$_.title -eq $roomName} |  Select-Object id}
+            
+            $webResponse = Invoke-WebRequest -Uri https://api.ciscospark.com/v1/rooms -Headers $headers
+            $roomId = $webResponse.Content | ConvertFrom-Json | %{$_.items | ?{$_.title -eq $roomName} |  Select-Object id}
+            
+            if ($roomId.Length -eq 0 -and ($webResponse.Headers["Link"].Split(';')[1] -eq ' rel="next"')) {
+                While($true) {
+
+                    $nextLink = $webResponse.Headers["Link"].Split(';')[0].replace("<","").replace(">","")
+                    $webResponse = Invoke-WebRequest -Uri $nextLink -Headers $headers
+                    $roomId = $webResponse.Content | ConvertFrom-Json | %{$_.items | ?{$_.title -eq $roomName} |  Select-Object id}
+                    if ($roomId.id.Length -gt 0 -or $webResponse.Headers["Link"].Length -eq 0) {break}
+                }
+            }
+
         } else {
             Write-Host "Please specify a Room."
             exit
         }
-
-        # Send a Message to the Room
-        if ($roomId) {
-            if ($message.Length -gt 0) {
-                $invokeRestResponse = Invoke-RestMethod -Uri https://api.ciscospark.com/v1/messages -Method POST -Headers $headers -Body $('{"roomId":"' + $roomId.id + '", "text": "' + $message + '"}')
-                if ($invokeRestResponse.id) {
-                    Write-Host "The message was successfully sent"
-                }
-            } else {
-                Write-Host "Please specify a Message."
-                exit
-            }
         } else {
             Write-Host -ForegroundColor Red "Room: `"$roomName`" was not found!"
         }
