@@ -39,15 +39,16 @@ param(
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Ssl3 -bor [System.Net.SecurityProtocolType]::Tls -bor [System.Net.SecurityProtocolType]::Tls11 -bor [System.Net.SecurityProtocolType]::Tls12
 
 # Set up the header
-    $headers = @{"Authorization" = "Bearer $apiToken"; "Content-Type" = "application/json"; "Acccept" = "application/json"}
+    $headers = @{"Authorization" = "Bearer $apiToken"; "Content-Type" = "application/json"; "Accept" = "application/json"}
 
     try {
         # Get the Id of the Room
         if ($roomName.Length -gt 0) {
-            
-            $webResponse = Invoke-WebRequest -Uri https://api.ciscospark.com/v1/rooms -Headers $headers
+
+            $webResponse = Invoke-WebRequest -Uri https://api.ciscospark.com/v1/rooms?max=1000 -Headers $headers -UseBasicParsing
+
             $roomId = $webResponse.Content | ConvertFrom-Json | %{$_.items | ?{$_.title -eq $roomName} |  Select-Object id}
-            
+
             if ($roomId.Length -eq 0 -and ($webResponse.Headers["Link"].Split(';')[1] -eq ' rel="next"')) {
                 While($true) {
 
@@ -62,6 +63,18 @@ param(
             Write-Host "Please specify a Room."
             exit
         }
+
+        if ($roomId) {
+            if ($message.Length -gt 0) {
+                $invokeRestResponse = Invoke-RestMethod -Uri https://api.ciscospark.com/v1/messages -Method POST -Headers $headers -Body $('{"roomId":"' + $roomId.id + '", "text": "' + $message + '"}')
+                if ($invokeRestResponse.id) {
+                    Write-Host "The message was successfully sent"
+                }
+            } else {
+                Write-Host "Please specify a Message."
+                exit
+            }
+
         } else {
             Write-Host -ForegroundColor Red "Room: `"$roomName`" was not found!"
         }
