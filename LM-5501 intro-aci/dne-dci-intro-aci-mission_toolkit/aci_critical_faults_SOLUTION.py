@@ -16,7 +16,7 @@ import requests, json
 
 # MISSION: Provide your Webex Teams Token and the Room ID into which to post
 access_token = ""
-webex_teams_room_id = ""
+room_id = ""
 
 fault_count = {"total": 0, "critical": 0}
 
@@ -27,7 +27,7 @@ def post_to_webex_teams(message):
     u = "https://api.ciscospark.com/v1/messages"
     headers = {"Content-type": "application/json; charset=utf-8",
                "Authorization": "Bearer {}".format(access_token)}
-    body = {"roomId": webex_teams_room_id,
+    body = {"roomId": room_id,
             "markdown": message}
     return requests.post(u, headers=headers, data=json.dumps(body))
 
@@ -72,7 +72,7 @@ while faults_obj.has_faults(session):
                     #print("\n".join(message))
 
                     webexteams = post_to_webex_teams("\n".join(message))
-                    if webexteams.status_code != 200: 
+                    if webexteams.status_code != 200:
                         print("Problem posting to Webex Teams, check token and ID")
                         exit(1)
 

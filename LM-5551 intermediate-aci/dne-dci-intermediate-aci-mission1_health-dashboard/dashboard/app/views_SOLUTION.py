@@ -10,9 +10,9 @@ import requests, json, sys
 #          You can get it from https://developer.webex.com 
 #          The RoomId should have been provided by the instructors
 access_token = ""
-webex_teams_room_id = ""
+room_id = ""
 
-if access_token == "" or webex_teams_room_id == "":
+if access_token == "" or room_id == "":
     print("\nError: Please edit the views.py file and provide your token and room id\n")
     sys.exit(1)
 
@@ -111,6 +111,6 @@ def post_to_webex_teams(message):
     u = "https://api.ciscospark.com/v1/messages"
     headers = {"Content-type": "application/json; charset=utf-8",
                "Authorization": "Bearer {}".format(access_token)}
-    body = {"roomId": webex_teams_room_id,
+    body = {"roomId": room_id,
             "markdown": message}
     return requests.post(u, headers=headers, data=json.dumps(body))

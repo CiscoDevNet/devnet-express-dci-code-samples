@@ -7,7 +7,7 @@
 
 - name: "Retrieve the Webex Teams room UUID from the room name"
   set_fact:
-    webex_teams_room_id: "{{ item.id }}"
+    room_id: "{{ item.id }}"
   when: item.title == "{{webex_teams_room}}"
   with_items: "{{rooms.json['items']}}"
 
@@ -17,6 +17,6 @@
     method: POST
     headers:
       Authorization: "Bearer {{access_token}}"
-    body: {roomId: "{{webex_teams_room_id}}", text: "Congrats! You finished the mission for LM-5601: Intro to NX-OS!"}
+    body: {roomId: "{{room_id}}", text: "Congrats! You finished the mission for LM-5601: Intro to NX-OS!"}
     body_format: json
   register: test

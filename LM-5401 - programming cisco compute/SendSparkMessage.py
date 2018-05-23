@@ -22,9 +22,9 @@ resp = resp.json()
 
 for room in resp["items"]:
      if room["title"] == webex_teams_room_name:
-             webex_teams_room_id = room["id"]
+             room_id = room["id"]
 
-webex_teams_msg_json = {"roomId": webex_teams_room_id, "text": webex_teams_message}
+webex_teams_msg_json = {"roomId": room_id, "text": webex_teams_message}
 resp = requests.post(webex_teams_uri_v1 + webex_teams_messages_resource, json=webex_teams_msg_json, headers=webex_teams_headers)
 
 resp = resp.json()
