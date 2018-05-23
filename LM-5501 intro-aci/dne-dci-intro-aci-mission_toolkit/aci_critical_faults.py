@@ -3,10 +3,10 @@
 DevNet Express for Data Center Infrastructure
 Intro to ACI Programmability Mission
 
-Reporting Critical Faults to Cisco Spark
+Reporting Critical Faults to Cisco Webex Teams
 
 This script will query the APIC for Faults and report
-them to Cisco Spark.
+them to Cisco Webex Teams.
 """
 
 from acitoolkit.acitoolkit import Session
@@ -14,20 +14,20 @@ from acitoolkit import Faults
 from credentials import URL, LOGIN, PASSWORD
 import requests, json
 
-# MISSION: Provide your Spark Token and the Room ID into which to post
-spark_token = ""
-spark_room_id = ""
+# MISSION: Provide your Webex Teams Token and the Room ID into which to post
+access_token = ""
+webex_teams_room_id = ""
 
 fault_count = {"total": 0, "critical": 0}
 
-def post_to_spark(message):
+def post_to_webex_teams(message):
     """
-	Simple API Call to Post Message to Spark
+	Simple API Call to Post Message to Webex Teams
 	"""
     u = "https://api.ciscospark.com/v1/messages"
     headers = {"Content-type": "application/json; charset=utf-8", 
-               "Authorization": "Bearer {}".format(spark_token)}
-    body = {"roomId": spark_room_id, 
+               "Authorization": "Bearer {}".format(access_token)}
+    body = {"roomId": webex_teams_room_id, 
             "markdown": message}
     return requests.post(u, headers=headers, data=json.dumps(body))
 	
@@ -71,12 +71,12 @@ while faults_obj.has_faults(session):
                     message.append( "    Domain              : " + )
                     #print("\n".join(message))
                     
-                    # Post message to Spark
-                    spark = post_to_spark("\n".join(message))
+                    # Post message to Webex Teams
+                    webexteams = post_to_webex_teams("\n".join(message))
                     if spark.status_code != 200: 
-                        print("Problem posting to Spark, check token and ID")
+                        print("Problem posting to Webex Teams, check token and ID")
                         exit(1)
                         
 # Print completion message
-print("{} Faults were found.\n  {} critical faults reported to Spark".format(fault_count["total"], 
+print("{} Faults were found.\n  {} critical faults reported to Webex Teams".format(fault_count["total"], 
                                                                              fault_count["critical"]))

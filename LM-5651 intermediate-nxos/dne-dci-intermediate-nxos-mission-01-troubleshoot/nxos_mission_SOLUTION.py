@@ -2,7 +2,7 @@
 import requests
 import json
 import os
-from ciscosparkapi import CiscoSparkAPI
+from ciscosparkapi import CiscoWebex TeamsAPI
 
 ROOM_NAME = "" # MISSION: Paste room name here
 ACCESS_TOKEN = "" # MISSION: Paste your access token here
@@ -11,9 +11,9 @@ if not ROOM_NAME or not ACCESS_TOKEN:
     exit("Looks like ROOM_NAME and/or ACCESS_TOKEN variables are empty.\n"\
          "If you are attending a DevNetExpress Event obtain the room name from your instructor "\
          " and populate the ROOM_NAME variable.\n"\
-         "To obtain your access token visit https://developer.ciscospark.com and assign it to ACCESS_TOKEN variable.")
+         "To obtain your access token visit https://developer.webex.com and assign it to ACCESS_TOKEN variable.")
 
-api = CiscoSparkAPI(access_token=ACCESS_TOKEN)
+api = CiscoWebex TeamsAPI(access_token=ACCESS_TOKEN)
 all_rooms = api.rooms.list()
 ROOM_ID =[rm.id for rm in all_rooms if ROOM_NAME in rm.title]
 
@@ -131,6 +131,6 @@ while True:
         input("Sorry the number you have entered is not valid. Press Enter to try again!")
 try:
     api.messages.create(ROOM_ID[0], markdown=mission_msg)
-    print("You successfully completed the mission. Check the Spark Room ")
+    print("You successfully completed the mission. Check the Webex Teams Room ")
 except:
-    print("Something went wrong while posting the message in the Spark Room!")
+    print("Something went wrong while posting the message in the Webex Teams Room!")

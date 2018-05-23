@@ -3,9 +3,9 @@ import argparse
 from acitoolkit.acitoolkit import *
 from credentials import *
 
-cli_args = argparse.ArgumentParser("Post to Spark", "Collects an Access Token to connect to Spark Chatroom")
+cli_args = argparse.ArgumentParser("Post to Webex Teams", "Collects an Access Token to connect to Webex Teams Chatroom")
 cli_args.add_argument('-t', '--token', required=True,
-                      help="The Access Token provided by https://developer.ciscospark.com/ after login.")
+                      help="The Access Token provided by https://developer.webex.com/ after login.")
 cli_args.add_argument('-r', '--roomid', required=True,
                       help="The Room ID associated with the chatroom used for messages")
 
@@ -33,7 +33,7 @@ def subscribe_to_events(session):
             else:
                 status = "has been created/modified"
 
-            post_message_to_spark("{} {}".format(event.dn, status))
+            post_message_to_webex_teams("{} {}".format(event.dn, status))
 
         elif AppProfile.has_events(session):
             event = AppProfile.get_event(session)
@@ -42,7 +42,7 @@ def subscribe_to_events(session):
             else:
                 status = "has been created/modified"
 
-            post_message_to_spark("{} {}".format(event.dn, status))
+            post_message_to_webex_teams("{} {}".format(event.dn, status))
 
         elif EPG.has_events(session):
             event = EPG.get_event(session)
@@ -51,10 +51,10 @@ def subscribe_to_events(session):
             else:
                 status = "has been created/modified"
 
-            post_message_to_spark("{} {}".format(event.dn, status))
+            post_message_to_webex_teams("{} {}".format(event.dn, status))
 
 
-def post_message_to_spark(message):
+def post_message_to_webex_teams(message):
     header = {"Authorization": TOKEN, "Content-Type": "application/json"}
     message_url = "https://api.ciscospark.com/v1/messages"
 
@@ -62,7 +62,7 @@ def post_message_to_spark(message):
     response = requests.post(message_url, json=request_body, headers=header)
 
     if not response.ok:
-        print("FAILED TO SEND {} TO SPARK".format(message))
+        print("FAILED TO SEND {} TO WEBEX TEAMS".format(message))
 
 
 if __name__ == "__main__":

@@ -1,2 +1,2 @@
-spark_token: <ADD-SPARK-TOKEN-HERE>
-spark_room: <ADD-SPARK-ROOMNAME-HERE>
+access_token: <ADD-WEBEX-TEAMSTOKEN-HERE>
+webex_teams_room: <ADD-WEBEX-TEAMSROOMNAME-HERE>

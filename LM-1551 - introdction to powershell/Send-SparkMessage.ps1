@@ -1,57 +1,57 @@
 ﻿<#
 
 .SYNOPSIS
-Send-SparkMessage, Send a Spark Message to a Spark Room
+Send-WebexTeamsMessage, Send a Webex Teams Message to a Webex Teams Room
 
 .DESCRIPTION
-Send-SparkMessage, Send a Spark Message to a Spark Room
+Send-WebexTeamsMessage, Send a Webex Teams Message to a Webex Teams Room
 
 .NOTES
 John McDonough, Cisco Systems, Inc. (jomcdono)
 
-.PARAMETER SparkApiToken
-Your Spark API Token
+.PARAMETER WebexTeamsApiToken
+Your Webex Teams API Token
 
-.PARAMETER SparkRoomName
-A Spark Room Name 
+.PARAMETER WebexTeamsRoomName
+A Webex Teams Room Name
 
-.PARAMETER SparkMessage
-The Spark Message you wish to Send
+.PARAMETER WebexTeamsMessage
+The Webex Teams Message you wish to Send
 
 .EXAMPLE
-Send-SparkMessage.ps1 -SparkApiToken "ZDNiZmFiOWEtN2Y3Zi00YjI3LWI3NWItYmNkNzQxOTUyYmZiNWQ0ZTY5N2ItOTlj" -SparkRoomName "DevNet Express DCI Event Room" -SparkMessage "Hi how's the DevNet Express DCI event"
+Send-WebexTeamsMessage.ps1 -WebexTeamsApiToken "ZDNiZmFiOWEtN2Y3Zi00YjI3LWI3NWItYmNkNzQxOTUyYmZiNWQ0ZTY5N2ItOTlj" -WebexTeamsRoomName "DevNet Express DCI Event Room" -WebexTeamsMessage "Hi how's the DevNet Express DCI event"
 
 #>
 param(
-  [Parameter(Mandatory=$true,HelpMessage="Enter your Spark API Token - put in double quotes `" please.")]
-    [string] $SparkApiToken,
+  [Parameter(Mandatory=$true,HelpMessage="Enter your Webex Teams API Token - put in double quotes `" please.")]
+    [string] $WebexTeamsApiToken,
 
-  [Parameter(Mandatory=$true,HelpMessage="Enter a Spark Room Name - put in double quotes `" please.")]
+  [Parameter(Mandatory=$true,HelpMessage="Enter a Webex Teams Room Name - put in double quotes `" please.")]
   [AllowEmptyString()]
-    [string] $SparkRoomName,
-    
+    [string] $WebexTeamsRoomName,
+
   [Parameter(Mandatory=$true,HelpMessage="Enter a message - put in double quotes `" please.")]
   [AllowEmptyString()]
-    [string] $SparkMessage
+    [string] $WebexTeamsMessage
 );
 
 # Set up the Header
 
-    $headers = @{"Authorization" = "Bearer $SparkApiToken"; "Content-Type" = "application/json"; "Acccept" = "application/json"}
-  
+    $headers = @{"Authorization" = "Bearer $WebexTeamsApiToken"; "Content-Type" = "application/json"; "Acccept" = "application/json"}
+
     try {
-        # Get the Id of the Spark Room
-        if ($SparkRoomName.Length -gt 0) {
-            $sparkRoomId = Invoke-RestMethod -Uri https://api.ciscospark.com/v1/rooms -Headers $headers | %{$_.items | ?{$_.title -eq $SparkRoomName} |  Select-Object id}
+        # Get the Id of the Webex Teams Room
+        if ($WebexTeamsRoomName.Length -gt 0) {
+            $webexteamsRoomId = Invoke-RestMethod -Uri https://api.ciscospark.com/v1/rooms -Headers $headers | %{$_.items | ?{$_.title -eq $WebexTeamsRoomName} |  Select-Object id}
         } else {
-            Write-Host "Please specify a Spark Room."
+            Write-Host "Please specify a Webex Teams Room."
             exit
         }
 
-        # Send a Message to the Spark Room
-        if ($sparkRoomId) {
-            if ($SparkMessage.Length -gt 0) {
-                $invokeRestResponse = Invoke-RestMethod -Uri https://api.ciscospark.com/v1/messages -Method POST -Headers $headers -Body $('{"roomId":"' + $sparkRoomId.id + '", "text": "' + $SparkMessage + '"}')
+        # Send a Message to the Webex Teams Room
+        if ($webexteamsRoomId) {
+            if ($WebexTeamsMessage.Length -gt 0) {
+                $invokeRestResponse = Invoke-RestMethod -Uri https://api.ciscospark.com/v1/messages -Method POST -Headers $headers -Body $('{"roomId":"' + $webexteamsRoomId.id + '", "text": "' + $WebexTeamsMessage + '"}')
                 if ($invokeRestResponse.id) {
                     Write-Host "The message was sucessfully sent"
                 }
@@ -60,11 +60,11 @@ param(
                 exit
             }
         } else {
-            Write-Host -ForegroundColor Red "Spark Room: `"$SparkRoomName`" was not found!"
+            Write-Host -ForegroundColor Red "Webex Teams Room: `"$WebexTeamsRoomName`" was not found!"
         }
     } catch {
         Write-Host "There seems to be a problem!"
-        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
         Write-Host "StatusDescription:" $_.Exception.Response.StatusDescription
         exit
     }

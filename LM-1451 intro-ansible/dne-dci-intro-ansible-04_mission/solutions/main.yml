@@ -4,5 +4,5 @@ app_files:
   - index.html
   - your-automation-is-on-point.jpeg
 app_path: /var/www/html
-spark_token: <ADD-SPARK-TOKEN-HERE>
-spark_room: <ADD-SPARK-ROOMNAME-HERE>
+access_token: <ADD-WEBEX-TEAMSTOKEN-HERE>
+webex_teams_room: <ADD-WEBEX-TEAMSROOMNAME-HERE>

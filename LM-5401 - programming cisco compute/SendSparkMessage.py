@@ -2,30 +2,30 @@ import json
 import sys
 import requests
 
-spark_api_token = 'YOUR TOKEN'
-spark_room_name = 'YOUR EVENT ROOM NAME'
-spark_message = 'YOUR MESSAGE'
-#spark_message = 'I have completed the Programming Cisco Compute - Python Mission'
+webex_teams_api_token = 'YOUR TOKEN'
+webex_teams_room_name = 'YOUR EVENT ROOM NAME'
+webex_teams_message = 'YOUR MESSAGE'
+#webex_teams_message = 'I have completed the Programming Cisco Compute - Python Mission'
 
-if spark_api_token == 'YOUR TOKEN' or spark_room_name == 'YOUR EVENT ROOM NAME' or spark_message == 'YOUR MESSAGE':
-    print('Make the updates to the Spark variables')
+if webex_teams_api_token == 'YOUR TOKEN' or webex_teams_room_name == 'YOUR EVENT ROOM NAME' or webex_teams_message == 'YOUR MESSAGE':
+    print('Make the updates to the Webex Teams variables')
     quit()
 
-spark_messages_resource = '/messages'
-spark_rooms_resource = '/rooms'
-spark_uri_v1 = 'https://api.ciscospark.com/v1'
+webex_teams_messages_resource = '/messages'
+webex_teams_rooms_resource = '/rooms'
+webex_teams_uri_v1 = 'https://api.ciscospark.com/v1'
 
-spark_headers = {'Authorization':'Bearer ' + spark_api_token, 'Content-Type':'application/json', 'Accept':'application/json'}
+webex_teams_headers = {'Authorization':'Bearer ' + webex_teams_api_token, 'Content-Type':'application/json', 'Accept':'application/json'}
 
-resp = requests.get(spark_uri_v1 + spark_rooms_resource, headers=spark_headers)
+resp = requests.get(webex_teams_uri_v1 + webex_teams_rooms_resource, headers=webex_teams_headers)
 resp = resp.json()
 
 for room in resp["items"]:
-     if room["title"] == spark_room_name:
-             spark_room_id = room["id"]
+     if room["title"] == webex_teams_room_name:
+             webex_teams_room_id = room["id"]
 
-spark_msg_json = {"roomId": spark_room_id, "text": spark_message}
-resp = requests.post(spark_uri_v1 + spark_messages_resource, json=spark_msg_json, headers=spark_headers)
+webex_teams_msg_json = {"roomId": webex_teams_room_id, "text": webex_teams_message}
+resp = requests.post(webex_teams_uri_v1 + webex_teams_messages_resource, json=webex_teams_msg_json, headers=webex_teams_headers)
 
 resp = resp.json()
 print(resp)

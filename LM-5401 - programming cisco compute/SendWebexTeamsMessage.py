@@ -10,7 +10,7 @@ message = 'YOUR MESSAGE'
 if (api_token == 'YOUR TOKEN' or
     room_name == 'YOUR EVENT ROOM NAME' or
     message == 'YOUR MESSAGE'):
-    print('Make the updates to the Spark variables')
+    print('Make the updates to the Webex Teams variables')
     quit()
 
 messages_resource = '/messages'
