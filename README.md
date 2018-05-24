@@ -1,6 +1,6 @@
-## Cisco DevNet Learning Labs: <title for collection of labs>
+## Cisco DevNet Learning Labs: Data Center Infrastructure Code Examples
 
-These self-paced interactive tutorials provide instructions for developers to ....
+These self-paced interactive tutorials provide instructions for developers to try some automation examples for DCI.
 
 Labs are written to be displayed within the [Cisco DevNet Learning Labs system](https://learninglabs.cisco.com).
 
@@ -12,11 +12,7 @@ The goal of these learning labs is to ensure a 'hands-on' learning approach rath
 
 ## About these Learning Labs
 
-For your repository, answer these questions:
-* What does this set of learning labs do?
-* Why is this set of learning labs useful?
-* How do I get started?
-* Where can I get more help?
+
 
 ## Contributing
 

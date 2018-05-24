@@ -2,10 +2,10 @@ import json
 import sys
 import requests
 
-api_token = 'YOUR TOKEN'
-room_name = 'YOUR EVENT ROOM NAME'
-message = 'YOUR MESSAGE'
-#message = 'I have completed the Programming Cisco Compute - Python Mission'
+api_token = 'NDlkYWIzNTktZjE5MS00MDRlLWJkN2ItYjdmMjNiYzU1NDVmZGZhZjc2NDktNTc3'
+room_name = 'NetDevOps CICD Bot'
+#message = 'YOUR MESSAGE'
+message = 'I have completed the Programming Cisco Compute - Python Mission'
 
 if (api_token == 'YOUR TOKEN' or
     room_name == 'YOUR EVENT ROOM NAME' or
@@ -21,7 +21,8 @@ http_headers = {'Authorization':'Bearer ' + api_token, 'Content-Type':'applicati
 
 resp = requests.get(uri_v1 + rooms_resource, headers=http_headers)
 resp = resp.json()
-
+if "errors" in resp:
+   print(resp)
 for room in resp["items"]:
      if room["title"] == room_name:
              room_id = room["id"]
