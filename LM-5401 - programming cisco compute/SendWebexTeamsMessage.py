@@ -2,10 +2,10 @@ import json
 import sys
 import requests
 
-api_token = 'NDlkYWIzNTktZjE5MS00MDRlLWJkN2ItYjdmMjNiYzU1NDVmZGZhZjc2NDktNTc3'
-room_name = 'NetDevOps CICD Bot'
-#message = 'YOUR MESSAGE'
-message = 'I have completed the Programming Cisco Compute - Python Mission'
+api_token = 'YOUR TOKEN'
+room_name = 'YOUR EVENT ROOM NAME'
+message = 'YOUR MESSAGE'
+#message = 'I have completed the Programming Cisco Compute - Python Mission'
 
 if (api_token == 'YOUR TOKEN' or
     room_name == 'YOUR EVENT ROOM NAME' or
