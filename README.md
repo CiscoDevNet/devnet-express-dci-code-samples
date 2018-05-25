@@ -1,6 +1,6 @@
-## Cisco DevNet Learning Labs: 
+## Cisco DevNet Learning Labs: DevNet Express Data Center Infrastructure track code examples
 
-These self-paced interactive tutorials provide instructions for developers to .... 
+These self-paced interactive tutorials provide instructions for developers to try Python, PowerShell, and other tools to interact with Data Center infrastructure programmatically. 
 
 Labs are written to be displayed within the [Cisco DevNet Learning Labs system](https://learninglabs.cisco.com).
 
@@ -12,11 +12,7 @@ The goal of these learning labs is to ensure a 'hands-on' learning approach rath
 
 ## About these Learning Labs
 
-For your repository, answer these questions: 
-* What does this set of learning lab do?
-* Why is this set of learning lab useful?
-* How do I get started?
-* Where can I get more help, if I need it?
+If you need more help, reach out to DevNet through one of our [support options](https://developer.cisco.com/site/devnet/support/).
 
 ## Contributing
 
