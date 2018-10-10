@@ -7,6 +7,7 @@ if num < 1:
 elif num ==1:
 	print("I'm equal to 1.")
 else:
+	print ("I'm greater than 1!")
 	print ("Goodbye Cruel World!")
 
 print("I always get printed!")
