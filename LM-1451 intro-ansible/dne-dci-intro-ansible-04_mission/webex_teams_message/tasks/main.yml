@@ -8,7 +8,7 @@
 - name: "Retrieve the Webex Teams room UUID from the room name"
   set_fact:
     webex_teams_room_id: "{{ item.id }}"
-  when: item.title == "{{ webex_teams_room }}"
+  when: item.title == webex_teams_room
   with_items: "{{ rooms.json['items'] }}"
 
 - name: "Post your message to the Webex Teams room"
