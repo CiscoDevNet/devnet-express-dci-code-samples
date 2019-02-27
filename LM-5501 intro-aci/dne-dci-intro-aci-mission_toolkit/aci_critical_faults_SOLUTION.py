@@ -71,7 +71,7 @@ while faults_obj.has_faults(session):
                     message.append( "    Domain              : " + fault.domain)
                     #print("\n".join(message))
                     
-                    post_resp = post_to_spark("\n".join(message))
+                    post_resp = post_message("\n".join(message))
                     if post_resp.status_code != 200: 
                         print("Problem posting message to Webex Teams, check token and room_id")
                         exit(1)
