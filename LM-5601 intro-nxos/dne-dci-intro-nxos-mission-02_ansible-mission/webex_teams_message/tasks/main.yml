@@ -17,5 +17,5 @@
     method: POST
     headers:
       Authorization: "Bearer {{ webex_teams_token }}"
-    body: {roomId: "{{ webex_teams_room_id }}", text: "Congrats! You finished the mission for LM-1451: Intro to Ansible!"}
+    body: {roomId: "{{ webex_teams_room_id }}", text: "Congrats! You finished the mission for LM-5601: Intro to NX-OS Programmability!"}
     body_format: json
