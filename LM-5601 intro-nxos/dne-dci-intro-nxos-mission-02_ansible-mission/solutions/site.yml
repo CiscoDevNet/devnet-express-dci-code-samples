@@ -11,6 +11,6 @@
 - hosts: localhost
   gather_facts: no
   vars_files:
-    - group_vars/spark_main.yml
+    - group_vars/webex_teams_main.yml
   roles:
-    - {role: spark_message}
+    - { role: webex_teams_message }

@@ -1,0 +1,21 @@
+- name: "Get Webex Teams Rooms List"
+  uri:
+    url: https://api.ciscospark.com/v1/rooms
+    headers:
+      Authorization: "Bearer {{webex_teams_token}}"
+  register: rooms
+
+- name: "Retrieve the Webex Teams room UUID from the room name"
+  set_fact:
+    webex_teams_room_id: "{{ item.id }}"
+  when: item.title == webex_teams_room
+  with_items: "{{ rooms.json['items'] }}"
+
+- name: "Post your message to the Webex Teams room"
+  uri:
+    url: https://api.ciscospark.com/v1/messages
+    method: POST
+    headers:
+      Authorization: "Bearer {{ webex_teams_token }}"
+    body: {roomId: "{{ webex_teams_room_id }}", text: "Congrats! You finished the mission for LM-1451: Intro to Ansible!"}
+    body_format: json

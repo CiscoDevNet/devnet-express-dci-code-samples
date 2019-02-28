@@ -1,12 +1,12 @@
 ## Cisco DevNet Learning Labs: DevNet Express Data Center Infrastructure track code examples
 
-These self-paced interactive tutorials provide instructions for developers to try Python, PowerShell, and other tools to interact with Data Center infrastructure programmatically. 
+These self-paced interactive tutorials provide instructions for developers to try Python, PowerShell, and other tools to interact with Data Center infrastructure programmatically.
 
 Labs are written to be displayed within the [Cisco DevNet Learning Labs system](https://learninglabs.cisco.com).
 
 Contributions are welcome, and we are glad to review changes through pull requests. See [contributing.md](contributing.md) for details.
 
-Once approved, create a release that we use to publish in our Learning Labs system. 
+Once approved, create a release that we use to publish in our Learning Labs system.
 
 The goal of these learning labs is to ensure a 'hands-on' learning approach rather than just theory or instructions.
 
@@ -27,7 +27,7 @@ To create and publish a new lab, you must:
 - Create a JSON file with the same name as the labs/folder name
 - Create markdown files named 1.md, 2.md, and so on, and refer to those files in the JSON file
 - Ensure the JSON file contains page titles in addition to file references
-- Send a pull request, then get the files commited and merged to `master` by a DevNet reviewer
+- Send a pull request, then get the files committed and merged to `master` by a DevNet reviewer
 
 A DevNet reviewer then creates a release on the repository with the latest `master` and publishes through the admin interface.
 
@@ -46,4 +46,3 @@ You can validate a JSON file by using the [online formatter and validator](https
 
 * If you'd like to make contributions, refer to [contributing.md](contributing.md).
 * If you're interested in creating a Cisco DevNet Learning Lab, please contact a DevNet administrator for guidance.
-

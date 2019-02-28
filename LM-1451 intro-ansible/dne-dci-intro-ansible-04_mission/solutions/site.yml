@@ -29,4 +29,4 @@
   vars_files:
     - vars/main.yml
   roles:
-    - {role: spark_message}
+    - { role: webex_teams_message }

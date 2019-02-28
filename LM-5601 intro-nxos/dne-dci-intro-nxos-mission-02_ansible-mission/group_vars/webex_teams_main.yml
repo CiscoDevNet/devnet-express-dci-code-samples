@@ -1,9 +1,3 @@
-apache_listen_port: 80
-apache_create_vhosts: false
-app_files:
-  - index.html
-  - your-automation-is-on-point.jpeg
-app_path: /var/www/html
 webex_teams_token: ADD-WEBEX-TEAMS-TOKEN-HERE
 webex_teams_room: ADD-WEBEX-TEAMS-ROOMNAME-HERE
 webex_teams_room_id: ADD-WEBEX-TEAMS-ROOM-ID-HERE
