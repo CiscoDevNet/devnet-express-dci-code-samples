@@ -33,7 +33,7 @@ that effort, then follow the _Changing the Learning Lab content_ guidance below.
 ## Changing the Learning Lab content
 
 Generally speaking, you should clone the Learning Lab repository, make changes in
-your fork, and then submit a pull request (PR). All new content should be tested
+your local copy, and then submit a pull request (PR). All new content should be tested
 to validate that documented tasks work correctly. Additionally, the content
 should follow the [Learning Lab Style Guide](https://github.com/CiscoDevNet/devnet-writing-guidelines/wiki/Lab-Style-Guide).
 
