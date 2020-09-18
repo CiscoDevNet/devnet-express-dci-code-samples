@@ -20,8 +20,10 @@
 """
 Simple application that logs on to the Switch and configure the Interfaces.
 """
-import nxtoolkit.nxtoolkit as NX
+# pylint: disable=import-error
+
 import sys
+import nxtoolkit.nxtoolkit as NX
 
 
 def main():
@@ -66,7 +68,6 @@ def main():
     # Print original access VLAN
     print("New VLAN:")
     print(interface.get_access_vlan())
-
 
 
 if __name__ == '__main__':

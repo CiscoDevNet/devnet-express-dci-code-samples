@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 """Basic script to operate VLANs."""
+# pylint: disable=import-error
 
 import argparse
-import cli
 import sys
+import cli
 
 
 def configure_vlans(vlans, oper, interfaces):
@@ -14,22 +15,28 @@ def configure_vlans(vlans, oper, interfaces):
                 conf = 'conf t ; interface '
                 for interface in interfaces:
                     print('Adding VLANs: {vlans} to interface: '
-                          '{interface}'.format(interface=interface,
-                                               vlans=",".join(map(str, vlans))))
+                            '{interface}'.format(interface=interface,
+                                vlans=",".join(map(str, vlans))))
                     cli.cli('{conf} {interface} ; '
-                            'switchport trunk allowed vlan add {vlans}'.format(conf=conf,
-                                                                               interface=interface,
-                                                                               vlans=",".join(map(str, vlans))))
+                            'switchport trunk allowed vlan add {vlans}'.format(
+                                conf=conf,
+                                interface=interface,
+                                vlans=",".join(map(str, vlans)))
+                            )
             elif oper == 'delete':
                 remove = 'conf t ; interface '
                 for interface in interfaces:
                     print('Removing VLANs: {vlans} from interface: '
-                          '{interface}'.format(interface=interface,
-                                               vlans=",".join(map(str, vlans))))
+                            '{interface}'.format(
+                                interface=interface,
+                                vlans=",".join(map(str, vlans)))
+                            )
                     cli.cli('{remove} {interface} ; '
-                            'switchport trunk allowed vlan remove {vlans}'.format(remove=remove,
-                                                                                  interface=interface,
-                                                                                  vlans=",".join(map(str, vlans))))
+                            'switchport trunk allowed vlan remove {vlans}'.format(
+                                remove=remove,
+                                interface=interface,
+                                vlans=",".join(map(str, vlans)))
+                            )
 
         else:
             if oper == 'add':
@@ -40,8 +47,10 @@ def configure_vlans(vlans, oper, interfaces):
             elif oper == 'delete':
                 print('Removing VLANs: {vlans}'.format(vlans=",".join(map(str, vlans))))
                 remove = 'conf t ; no vlan '
-                cli.cli("{remove} {vlans}".format(remove=remove,
-                                                  vlans=",".join(map(str, vlans))))
+                cli.cli("{remove} {vlans}".format(
+                    remove=remove,
+                    vlans=",".join(map(str, vlans)))
+                )
 
 
 def main():

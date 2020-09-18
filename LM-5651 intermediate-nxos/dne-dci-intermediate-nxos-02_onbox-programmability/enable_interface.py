@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 """Basic script to call from EEM."""
+# pylint: disable=import-error
 
-import cisco
 import sys
+import cisco
 
 
 def main():

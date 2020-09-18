@@ -22,11 +22,12 @@ Simple application that logs on to the Switch and displays all
 of the physical nodes; both belonging to and connected to the
 fabric.
 """
+# pylint: disable=import-error
 
+import sys
 from nxtoolkit.nxtoolkit import Credentials
 from nxtoolkit.nxtoolkit import Interface
 from nxtoolkit.nxtoolkit import Session
-import sys
 
 
 def main():
